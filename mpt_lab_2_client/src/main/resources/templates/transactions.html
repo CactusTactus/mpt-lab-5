@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="ru"
+>
+<head>
+    <title>Estate transactions</title>
+</head>
+<body>
+<h1>Estate transactions</h1>
+<div class="container-fluid text-center">
+    <table class="table table-hover table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Apartment cost</th>
+            <th scope="col">Apartment area</th>
+            <th scope="col">Date</th>
+            <th scope="col">Agent name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr scope="row" th:each="transaction : ${transactions}">
+            <th th:text="${transaction.estateTransactionId}"></th>
+            <th th:text="${transaction.apartmentCost}"></th>
+            <th th:text="${transaction.apartmentArea}"></th>
+            <th th:text="${transaction.transactionDate}"></th>
+            <th th:text="${transaction.estateAgentId}"></th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

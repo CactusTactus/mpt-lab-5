@@ -1,0 +1,14 @@
+<jaxws:bindings xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                wsdlLocation="http://localhost:8095/wss/estateagent?wsdl"
+                xmlns:jaxws="http://java.sun.com/xml/ns/jaxws">
+    <jaxws:bindings node="//wsdl:portType[@name='EstateAgentWebService']">
+        <jaxws:bindings node="wsdl:operation[@name='getEstateAgents']">
+            <jaxws:enableAsyncMapping>true</jaxws:enableAsyncMapping>
+        </jaxws:bindings>
+    </jaxws:bindings>
+    <jaxws:bindings node="//wsdl:portType[@name='EstateAgentWebService']">
+        <jaxws:bindings node="wsdl:operation[@name='getEstateAgentById']">
+            <jaxws:enableAsyncMapping>true</jaxws:enableAsyncMapping>
+        </jaxws:bindings>
+    </jaxws:bindings>
+</jaxws:bindings>

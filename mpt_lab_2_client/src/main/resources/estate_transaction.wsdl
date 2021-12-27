@@ -1,0 +1,104 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://example.com/spring-boot-soap-example" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://example.com/spring-boot-soap-example" targetNamespace="http://example.com/spring-boot-soap-example">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://example.com/spring-boot-soap-example">
+            <xs:element name="createEstateTransactionRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="estate_transaction" type="tns:estate_transaction"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getEstateTransactionsRequest"/>
+            <xs:element name="getEstateTransactionsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="estate_transactions" type="tns:estate_transaction"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getEstateTransactionsByEstateAgentIdRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="estate_agent_id" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getEstateTransactionsByEstateAgentIdResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="estate_transactions" type="tns:estate_transaction"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="estate_transaction">
+                <xs:sequence>
+                    <xs:element name="estate_transaction_id" type="xs:int"/>
+                    <xs:element name="apartment_cost" type="xs:int"/>
+                    <xs:element name="apartment_area" type="xs:int"/>
+                    <xs:element name="transaction_date" type="xs:long"/>
+                    <xs:element name="estate_agent_id" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getEstateTransactionsResponse">
+        <wsdl:part element="tns:getEstateTransactionsResponse" name="getEstateTransactionsResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="createEstateTransactionRequest">
+        <wsdl:part element="tns:createEstateTransactionRequest" name="createEstateTransactionRequest"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getEstateTransactionsRequest">
+        <wsdl:part element="tns:getEstateTransactionsRequest" name="getEstateTransactionsRequest"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getEstateTransactionsByEstateAgentIdResponse">
+        <wsdl:part element="tns:getEstateTransactionsByEstateAgentIdResponse" name="getEstateTransactionsByEstateAgentIdResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getEstateTransactionsByEstateAgentIdRequest">
+        <wsdl:part element="tns:getEstateTransactionsByEstateAgentIdRequest" name="getEstateTransactionsByEstateAgentIdRequest"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="EstateTransactionServicePortSoap11">
+        <wsdl:operation name="getEstateTransactions">
+            <wsdl:input message="tns:getEstateTransactionsRequest" name="getEstateTransactionsRequest"> </wsdl:input>
+            <wsdl:output message="tns:getEstateTransactionsResponse" name="getEstateTransactionsResponse"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createEstateTransaction">
+            <wsdl:input message="tns:createEstateTransactionRequest" name="createEstateTransactionRequest"> </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getEstateTransactionsByEstateAgentId">
+            <wsdl:input message="tns:getEstateTransactionsByEstateAgentIdRequest" name="getEstateTransactionsByEstateAgentIdRequest"> </wsdl:input>
+            <wsdl:output message="tns:getEstateTransactionsByEstateAgentIdResponse" name="getEstateTransactionsByEstateAgentIdResponse"> </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="EstateTransactionServicePortSoap11Soap11" type="tns:EstateTransactionServicePortSoap11">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getEstateTransactions">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="getEstateTransactionsRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getEstateTransactionsResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createEstateTransaction">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="createEstateTransactionRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+        <wsdl:operation name="getEstateTransactionsByEstateAgentId">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="getEstateTransactionsByEstateAgentIdRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getEstateTransactionsByEstateAgentIdResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="EstateTransactionServicePortSoap11Service">
+        <wsdl:port binding="tns:EstateTransactionServicePortSoap11Soap11" name="EstateTransactionServicePortSoap11Soap11">
+            <soap:address location="http://localhost:8092/ws"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

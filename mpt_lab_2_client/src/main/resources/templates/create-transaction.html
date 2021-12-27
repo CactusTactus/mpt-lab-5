@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New estate transaction</title>
+</head>
+<body>
+<h1>Create new estate transaction</h1>
+<form action="#" th:action="@{/save-transaction}" th:object="${transaction}" method="post">
+    <p>Apartment cost: <input type="number" th:field="*{apartmentCost}"/></p>
+    <p>Apartment area: <input type="number" th:field="*{apartmentArea}"/></p>
+    <p>Date: <input type="text" th:field="*{transactionDate}"/></p>
+    <p>Agent ID: <input type="text" th:field="*{estateAgentId}"/></p>
+    <p>
+        <input type="submit" value="Submit"/>
+        <input type="reset" value="Reset"/>
+    </p>
+</form>
+</body>
+</html>

@@ -1,0 +1,8 @@
+#camunda.bpm.client:
+#  base-url: http://localhost:8080/engine-rest # the URL pointing to the Camunda Platform Runtime REST API
+#  lock-duration: 1000 # defines how many milliseconds the External Tasks are locked until they can be fetched again
+#  subscriptions:
+#    get-agent-transactions: # topic name of the External Service Task
+#      process-definition-key: loan_process
+#      include-extension-properties: true
+#      variable-names: estateAgentId

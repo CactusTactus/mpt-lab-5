@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://example.com/spring-boot-soap-example"
+           targetNamespace="http://example.com/spring-boot-soap-example"
+           elementFormDefault="qualified">
+
+    <xs:element name="createEstateTransactionRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="estate_transaction" type="tns:estate_transaction"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getEstateTransactionsRequest"/>
+
+    <xs:element name="getEstateTransactionsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="estate_transactions" type="tns:estate_transaction" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getEstateTransactionsByEstateAgentIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="estate_agent_id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getEstateTransactionsByEstateAgentIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="estate_transactions" type="tns:estate_transaction" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="estate_transaction">
+        <xs:sequence>
+            <xs:element name="estate_transaction_id" type="xs:int"/>
+            <xs:element name="apartment_cost" type="xs:int"/>
+            <xs:element name="apartment_area" type="xs:int"/>
+            <xs:element name="transaction_date" type="xs:long"/>
+            <xs:element name="estate_agent_id" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
